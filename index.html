@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md. Al Imran Emon — Portfolio</title>
+  <meta name="description" content="Portfolio of Md. Al Imran Emon — Competitive Programmer, Software Developer, AI/ML Enthusiast." />
+  <meta name="theme-color" content="#0a0f1a" />
+  <meta name="author" content="Md. Al Imran Emon" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Md. Al Imran Emon — Portfolio" />
+  <meta property="og:description" content="Competitive Programmer, Software Developer & AI/ML Enthusiast from Dhaka, Bangladesh." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="Al Imran Emon.jpg" />
+
+  <!-- Favicon (emoji fallback) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            navy: { 900: '#0a0f1a', 800: '#0f1729', 700: '#151e30' },
+            cyan: { 400: '#22d3ee', 500: '#06b6d4' },
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Lucide Icons (pinned version for reliability) -->
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+  <style>
+    /* ── Base ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-family: 'Inter', sans-serif; }
+    body { overflow-x: hidden; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #22d3ee44; border-radius: 999px; }
+
+    /* ── Gradient text ── */
+    .gradient-text {
+      background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 50%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Glass card ── */
+    .glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* ── Floating Navbar ── */
+    .nav-float {
+      position: fixed;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      width: calc(100% - 24px);
+      max-width: 900px;
+      border-radius: 9999px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(10, 15, 26, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255,255,255,0.05) inset;
+      transition: all .4s cubic-bezier(.4,0,.2,1);
+      padding: 0 4px;
+    }
+    @media (min-width: 640px) {
+      .nav-float { width: calc(100% - 32px); padding: 0 6px; }
+    }
+    .nav-float.scrolled {
+      top: 8px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255,255,255,0.06) inset;
+      background: rgba(10, 15, 26, 0.88);
+    }
+    html:not(.dark) .nav-float {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0,0,0,0.06);
+    }
+    html:not(.dark) .nav-float.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    /* ── Nav links pill hover ── */
+    .nav-link {
+      position: relative;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      transition: all .25s ease;
+      font-size: 13px;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      background: rgba(34, 211, 238, 0.1);
+      color: #22d3ee !important;
+    }
+    html:not(.dark) .nav-link:hover,
+    html:not(.dark) .nav-link.active {
+      background: rgba(8, 145, 178, 0.08);
+      color: #0891b2 !important;
+    }
+
+    /* ── Button glow ── */
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .btn-glow::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, #22d3ee55, #3b82f655);
+      z-index: -1;
+      filter: blur(12px);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .btn-glow:hover::before { opacity: 1; }
+    .btn-glow:hover { transform: translateY(-2px); box-shadow: 0 0 24px rgba(34,211,238,.25); }
+
+    /* ── Profile glow ── */
+    .profile-glow {
+      box-shadow: 0 0 40px rgba(34,211,238,.18), 0 0 80px rgba(59,130,246,.10);
+    }
+
+    /* ── Background blobs ── */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: .12;
+      pointer-events: none;
+    }
+    html:not(.dark) .blob { opacity: .04; }
+
+    /* ── Card hover lift ── */
+    .card-hover { transition: transform .3s ease, box-shadow .3s ease; }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(34,211,238,.10);
+    }
+
+    /* ── Typing cursor ── */
+    .typing-cursor::after {
+      content: '|';
+      animation: blink .8s step-end infinite;
+      color: #22d3ee;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ── Floating animation ── */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .float { animation: float 5s ease-in-out infinite; }
+
+    /* ── Pulse ring ── */
+    @keyframes pulseRing {
+      0% { transform: scale(.95); opacity: .6; }
+      70% { transform: scale(1.15); opacity: 0; }
+      100% { transform: scale(.95); opacity: 0; }
+    }
+    .pulse-ring::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid #22d3ee;
+      animation: pulseRing 2.5s ease-out infinite;
+    }
+
+    /* ── Section divider ── */
+    .section-line {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, #22d3ee, #3b82f6);
+      border-radius: 999px;
+    }
+
+    /* ── Skill bar fill ── */
+    .skill-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #22d3ee, #3b82f6);
+      width: 0;
+      transition: width 1.2s cubic-bezier(.25,.8,.25,1);
+    }
+
+    /* ── Section divider borders ── */
+    section + section { border-top: 1px solid rgba(255,255,255,0.04); }
+    html:not(.dark) section + section { border-top-color: rgba(0,0,0,0.04); }
+
+    /* ═══════════════════════════════════════════ */
+    /* ══════  LIGHT MODE — Premium Overhaul  ══════ */
+    /* ═══════════════════════════════════════════ */
+
+    html:not(.dark) body {
+      background: linear-gradient(135deg, #f8fafc 0%, #f0f4ff 40%, #faf5ff 70%, #f0fdfa 100%);
+      color: #1e293b;
+    }
+
+    /* Subtle mesh gradient overlay for light mode */
+    html:not(.dark) body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 10% 20%, rgba(8,145,178,0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 70%, rgba(124,58,237,0.03) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(59,130,246,0.03) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    html:not(.dark) .gradient-text {
+      background: linear-gradient(135deg, #0891b2 0%, #2563eb 50%, #7c3aed 100%);
+      -webkit-background-clip: text; background-clip: text;
+    }
+
+    html:not(.dark) .glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow:
+        0 1px 3px rgba(0,0,0,0.04),
+        0 4px 14px rgba(0,0,0,0.03),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+    html:not(.dark) .glass:hover {
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    html:not(.dark) .card-hover:hover {
+      box-shadow:
+        0 12px 40px rgba(8,145,178,0.08),
+        0 4px 16px rgba(0,0,0,0.06),
+        inset 0 1px 0 rgba(255,255,255,1);
+      transform: translateY(-6px);
+    }
+
+    html:not(.dark) .profile-glow {
+      box-shadow: 0 0 40px rgba(8,145,178,.18), 0 0 80px rgba(37,99,235,.10), 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    html:not(.dark) .section-line {
+      background: linear-gradient(90deg, #0891b2, #2563eb, #7c3aed);
+    }
+
+    html:not(.dark) .skill-fill {
+      background: linear-gradient(90deg, #0891b2, #2563eb);
+    }
+
+    html:not(.dark) .btn-glow {
+      box-shadow: 0 2px 10px rgba(8,145,178,0.15);
+    }
+    html:not(.dark) .btn-glow:hover {
+      box-shadow: 0 4px 24px rgba(8,145,178,.25), 0 0 0 1px rgba(8,145,178,0.1);
+    }
+
+    html:not(.dark) .typing-cursor::after { color: #0891b2; }
+
+    html:not(.dark) ::-webkit-scrollbar-thumb { background: #0891b244; }
+
+    /* Light mode blobs — soft and warm */
+    html:not(.dark) .blob { opacity: 0.025; }
+
+    /* Light mode particles — darker dots */
+    html:not(.dark) #particles { opacity: 0.35; }
+
+    /* ── Light mode text visibility ── */
+    html:not(.dark) .text-gray-300 { color: #374151; }
+    html:not(.dark) .text-gray-400 { color: #4b5563; }
+    html:not(.dark) .text-gray-500 { color: #64748b; }
+    html:not(.dark) .text-gray-600 { color: #475569; }
+    html:not(.dark) .text-white { color: #0f172a; }
+    html:not(.dark) .dark\:text-white { color: #0f172a; }
+    html:not(.dark) .dark\:text-gray-400 { color: #475569; }
+    html:not(.dark) .dark\:text-gray-500 { color: #64748b; }
+    html:not(.dark) .nav-link { color: #475569; }
+    html:not(.dark) .mobile-link { color: #374151; }
+    html:not(.dark) footer p { color: #64748b; }
+    html:not(.dark) .border-white\/5 { border-color: rgba(0,0,0,0.06); }
+    html:not(.dark) .border-white\/10 { border-color: rgba(0,0,0,0.08); }
+    html:not(.dark) .hover\:bg-white\/10:hover { background: rgba(0,0,0,.04); }
+    html:not(.dark) .hover\:bg-white\/5:hover { background: rgba(0,0,0,.02); }
+    html:not(.dark) .bg-white\/5 { background: rgba(255,255,255,0.5); }
+    html:not(.dark) #menuBtn i,
+    html:not(.dark) #themeToggle .block { color: #475569; }
+
+    /* ── Light mode footer ── */
+    html:not(.dark) footer { border-top-color: rgba(0,0,0,0.06); }
+
+    /* ── Light mode contact border ── */
+    html:not(.dark) .border-gray-200 { border-color: rgba(0,0,0,0.08); }
+
+    /* ── Light mode emerald availability ── */
+    html:not(.dark) .bg-emerald-400\/10 { background: rgba(16,185,129,0.08); }
+    html:not(.dark) .border-emerald-400\/20 { border-color: rgba(16,185,129,0.15); }
+
+    /* ── Particle canvas ── */
+    #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+    /* ── Smooth scroll offset ── */
+    section[id] { scroll-margin-top: 80px; }
+
+    /* Mobile menu animation */
+    .mobile-menu { transition: max-height .35s ease, opacity .3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+    .mobile-menu.open { max-height: 200px; opacity: 1; }
+
+    /* ── Section alternating backgrounds ── */
+    .section-alt {
+      position: relative;
+    }
+    .dark .section-alt::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.01);
+      pointer-events: none;
+    }
+    html:not(.dark) .section-alt::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.35);
+      pointer-events: none;
+      border-radius: 0;
+    }
+
+    /* ── Better tag pills for light ── */
+    html:not(.dark) .px-3.py-1\.5 {
+      background: rgba(255,255,255,0.6) !important;
+      backdrop-filter: blur(8px);
+    }
+
+    /* ── Light mode hover for nav mobile ── */
+    html:not(.dark) .mobile-link:hover {
+      background: rgba(8,145,178,0.06);
+    }
+
+    /* ── Light stat cards ── */
+    html:not(.dark) .dark\:bg-white\/5 {
+      background: rgba(255,255,255,0.6);
+    }
+
+    /* ── Contact form styles ── */
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: all .25s ease;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #e2e8f0;
+    }
+    .form-input::placeholder { color: #64748b; }
+    .form-input:focus {
+      border-color: #22d3ee;
+      box-shadow: 0 0 0 3px rgba(34,211,238,0.1);
+    }
+    html:not(.dark) .form-input {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(0,0,0,0.08);
+      color: #1e293b;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    html:not(.dark) .form-input::placeholder { color: #94a3b8; }
+    html:not(.dark) .form-input:focus {
+      border-color: #0891b2;
+      box-shadow: 0 0 0 3px rgba(8,145,178,0.08);
+      background: #ffffff;
+    }
+    .form-input.textarea { resize: vertical; min-height: 120px; }
+
+    /* ── Navbar blinking status (mobile) ── */
+    @keyframes navTextFade {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .nav-blink {
+      animation: navTextFade 2.5s ease-in-out infinite;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      transition: opacity 0.4s ease;
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .float { animation: none; }
+      .pulse-ring::before { animation: none; }
+      [data-aos] { transition: none !important; transform: none !important; opacity: 1 !important; }
+    }
+
+    /* ══════════════════════════════════════════════ */
+    /* ══════  MOBILE — Comprehensive Optimizations  ══════ */
+    /* ══════════════════════════════════════════════ */
+
+    /* ── Tablet breakpoint (641–768px) ── */
+    @media (max-width: 768px) and (min-width: 640px) {
+      section { padding-top: 5rem !important; padding-bottom: 5rem !important; }
+      h2 { font-size: 1.65rem !important; }
+      .blob { filter: blur(90px); }
+    }
+
+    /* ── Mobile breakpoint (≤639px) ── */
+    @media (max-width: 639px) {
+
+      /* ─── Global resets ─── */
+      body { -webkit-text-size-adjust: 100%; }
+      .blob { filter: blur(70px); opacity: .08; }
+      html:not(.dark) .blob { opacity: .02; }
+
+      /* ─── Navbar tweaks ─── */
+      .nav-float { width: calc(100% - 32px); top: 8px; padding: 0 6px; }
+      .nav-float .flex.items-center.justify-between { padding-left: 2px; padding-right: 2px; }
+      .nav-float img { width: 26px; height: 26px; }
+      .nav-blink { font-size: 9px; letter-spacing: -0.01em; }
+      .mobile-menu { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 2px; }
+      html:not(.dark) .mobile-menu { border-top-color: rgba(0,0,0,0.06); }
+      .mobile-link { min-height: 44px; font-size: 14px; color: inherit; }
+      .mobile-link i { transition: transform .2s ease; }
+      .mobile-link:active i { transform: scale(1.2); }
+
+      /* ─── Hero section ─── */
+      #hero { min-height: 100svh; padding-top: 5rem !important; padding-bottom: 3rem !important; padding-left: 1.25rem; padding-right: 1.25rem; }
+      #hero .max-w-4xl { max-width: 100%; }
+      #hero img.rounded-full { width: 120px !important; height: 120px !important; }
+      .pulse-ring::before { inset: -4px; }
+      #hero .mb-6:first-of-type { margin-bottom: 1rem; }
+      h1 { font-size: 1.65rem !important; line-height: 1.25 !important; margin-bottom: 0.75rem !important; }
+      #hero .text-lg { font-size: 0.95rem !important; margin-bottom: 0.5rem !important; }
+      #hero .text-sm.text-gray-500 { font-size: 0.8rem; margin-bottom: 1.5rem !important; }
+      #hero .flex.flex-wrap.justify-center.gap-4 { gap: 0.75rem; }
+      #hero .flex.flex-wrap.justify-center.gap-4 a { padding: 0.65rem 1.5rem; font-size: 0.8rem; }
+      #hero .mt-16.animate-bounce { margin-top: 2.5rem; }
+
+      /* ─── Section heading defaults ─── */
+      h2 { font-size: 1.5rem !important; margin-bottom: 0.5rem !important; }
+      .section-line { width: 45px; height: 2.5px; }
+      .text-center.mb-16 { margin-bottom: 2.5rem !important; }
+      .text-center.mb-12 { margin-bottom: 2rem !important; }
+
+      /* ─── About section ─── */
+      #about { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; padding-left: 1rem; padding-right: 1rem; }
+      #about .max-w-5xl { max-width: 100%; }
+      #about .grid { display: flex !important; flex-direction: column; gap: 1.25rem !important; }
+      #about .md\:col-span-2 { order: 2; }
+      #about .md\:col-span-3 { order: 1; }
+      /* About cards area → centered 2-per-row grid */
+      #about .md\:col-span-2 .space-y-5 {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        max-width: 340px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      #about .md\:col-span-2 .space-y-5 > * { margin: 0 !important; }
+      /* Education card spans full row */
+      #about .md\:col-span-2 .space-y-5 > .glass.rounded-2xl.p-6 {
+        grid-column: 1 / -1;
+      }
+      /* Stats grid also spans full row */
+      #about .md\:col-span-2 .space-y-5 > .grid.grid-cols-2 {
+        grid-column: 1 / -1;
+      }
+      /* Education card compact */
+      #about .glass.rounded-2xl.p-6 { padding: 0.85rem 1rem; }
+      #about .glass.rounded-2xl.p-6 .w-10.h-10 { width: 34px; height: 34px; min-width: 34px; }
+      #about .glass.rounded-2xl.p-6 .w-10.h-10 i { width: 16px; height: 16px; }
+      #about .glass.rounded-2xl.p-6 h3 { font-size: 0.8rem; }
+      #about .glass.rounded-2xl.p-6 .text-xs { font-size: 10px; }
+      #about .glass.rounded-2xl.p-6 .mb-3 { margin-bottom: 0.35rem; }
+      /* Stats grid with icons */
+      #about .grid.grid-cols-2.gap-3 { gap: 0.5rem; }
+      #about .grid.grid-cols-2 .glass { padding: 0.7rem 0.5rem; }
+      #about .grid.grid-cols-2 .w-8.h-8 { width: 26px; height: 26px; min-width: 26px; border-radius: 6px; }
+      #about .grid.grid-cols-2 .w-8.h-8 i { width: 13px; height: 13px; }
+      #about .grid.grid-cols-2 .text-2xl { font-size: 1.2rem; }
+      #about .grid.grid-cols-2 .text-\[10px\] { font-size: 8px; }
+      #about .grid.grid-cols-2 .gap-1\.5 { gap: 0.25rem; }
+      /* About paragraphs */
+      #about p.text-gray-400 { font-size: 0.82rem !important; line-height: 1.6; margin-bottom: 0.7rem !important; }
+      /* Interest tags */
+      #about .flex.flex-wrap.gap-2 { gap: 0.35rem !important; }
+      #about .flex.flex-wrap.gap-2 span { font-size: 9px; padding: 3px 8px; }
+      #about .flex.flex-wrap.gap-2 span i { width: 10px; height: 10px; }
+
+      /* ─── Skills section ─── */
+      #skills { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; padding-left: 1rem; padding-right: 1rem; }
+      #skills .grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.6rem !important; }
+      #skills .glass.rounded-2xl.p-6 { padding: 0.85rem; border-radius: 14px; }
+      #skills .glass .flex.items-center.gap-3 { gap: 0.4rem; margin-bottom: 0.5rem; }
+      #skills .glass .w-10.h-10 { width: 30px; height: 30px; min-width: 30px; border-radius: 8px; }
+      #skills .glass .w-10.h-10 i { width: 15px; height: 15px; }
+      #skills .glass h3 { font-size: 0.75rem; }
+      #skills .glass .text-xs.text-gray-500 { font-size: 9px; line-height: 1.3; margin-bottom: 0.4rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+      #skills .glass .h-1\.5 { height: 3px; }
+
+      /* ─── CP Profiles section ─── */
+      #cp { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; padding-left: 1rem; padding-right: 1rem; }
+      #cp .grid { grid-template-columns: 1fr 1fr !important; gap: 0.5rem !important; max-width: 100% !important; }
+      #cp .glass.rounded-2xl.p-8 { padding: 0.85rem 0.65rem; border-radius: 12px; }
+      #cp .w-16.h-16 { width: 34px; height: 34px; margin-bottom: 0.45rem !important; border-radius: 10px; }
+      #cp .w-16.h-16 svg { width: 17px; height: 17px; }
+      #cp h3.text-xl { font-size: 0.75rem; }
+      #cp h3.text-xl i { width: 13px; height: 13px; }
+      #cp .text-sm.font-medium { font-size: 0.6rem; margin-bottom: 0.35rem !important; }
+      #cp .flex.justify-center.gap-6 { gap: 0.7rem; flex-direction: row; }
+      #cp .text-lg.font-bold { font-size: 0.82rem; }
+      #cp .flex.justify-center.gap-6 .text-xs { font-size: 8px; }
+      #cp .flex.justify-center.gap-6 .text-xs i { width: 9px; height: 9px; }
+      #cp .text-gray-500.text-sm.mt-4 { font-size: 0.72rem; }
+      #cp .mt-5 { margin-top: 0.45rem; font-size: 10px; opacity: 1 !important; }
+      #cp .mt-5 i { width: 11px; height: 11px; }
+
+      /* ─── Projects section ─── */
+      #projects { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; padding-left: 0.75rem; padding-right: 0.75rem; }
+      #projects .grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.5rem !important; }
+      #projects .glass { border-radius: 12px; }
+      #projects .glass .h-1\.5 { height: 2px; }
+      #projects .glass .p-7 { padding: 0.7rem; }
+      #projects .glass .p-7 .flex.items-start.justify-between { margin-bottom: 0.35rem; }
+      #projects .glass .p-7 .w-10.h-10 { width: 28px; height: 28px; min-width: 28px; border-radius: 8px; }
+      #projects .glass .p-7 .w-10.h-10 i { width: 14px; height: 14px; }
+      #projects .glass .p-7 .arrow-up-right,
+      #projects .glass .p-7 > .flex > i[data-lucide="arrow-up-right"] { width: 12px; height: 12px; }
+      #projects .glass .p-7 h3 { font-size: 0.72rem; margin-bottom: 0.15rem; line-height: 1.25; }
+      #projects .glass .p-7 .text-sm { font-size: 0.65rem; line-height: 1.4; margin-bottom: 0.4rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+      #projects .glass .p-7 .flex.flex-wrap.gap-2 { gap: 0.2rem; }
+      #projects .glass .p-7 .flex.flex-wrap.gap-2 span { font-size: 8px; padding: 1.5px 5px; }
+
+      /* ─── Contact section ─── */
+      #contact { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; padding-left: 1rem; padding-right: 1rem; }
+      #contact .max-w-3xl { max-width: 100%; }
+      #contact .grid { display: flex !important; flex-direction: column; gap: 1rem !important; }
+      #contact .md\:col-span-2 { order: 2; }
+      #contact .md\:col-span-3 { order: 1; }
+      /* Contact info cards — centered 2-per-row grid */
+      #contact .md\:col-span-2 .space-y-4 {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        max-width: 340px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      #contact .md\:col-span-2 .space-y-4 > * { margin: 0 !important; }
+      /* Last card (social links) centered on its own row */
+      #contact .md\:col-span-2 .space-y-4 > *:last-child {
+        grid-column: 1 / -1;
+        max-width: 200px;
+        justify-self: center;
+      }
+      #contact .glass.rounded-2xl.p-5 { padding: 0.75rem 0.85rem; border-radius: 12px; }
+      #contact .glass.rounded-2xl.p-5 .w-10.h-10 { width: 32px; height: 32px; min-width: 32px; border-radius: 8px; }
+      #contact .glass.rounded-2xl.p-5 .w-10.h-10 i { width: 15px; height: 15px; }
+      #contact .glass.rounded-2xl.p-5 .text-xs { font-size: 9px; }
+      #contact .glass.rounded-2xl.p-5 .text-sm { font-size: 11px; }
+      #contact .glass.rounded-2xl.p-5 .flex.gap-3 .w-9 { width: 30px; height: 30px; }
+      /* Contact form compact */
+      #contact .glass.rounded-2xl.p-6,
+      #contact .glass.rounded-2xl.p-8 { padding: 1rem; border-radius: 14px; }
+      .form-input { font-size: 16px !important; padding: 10px 12px; border-radius: 10px; }
+      .form-input.textarea { min-height: 90px; }
+      #contact .space-y-4 > div { margin-bottom: 0; }
+      #contact label { font-size: 10px; margin-bottom: 3px; }
+      #contact button[type="submit"] { padding: 0.65rem 1rem; font-size: 0.8rem; border-radius: 10px; }
+
+      /* ─── Back to top ─── */
+      .flex.justify-center.py-6 { padding-top: 1rem; padding-bottom: 0.75rem; }
+      .flex.justify-center.py-6 .w-10.h-10 { width: 36px; height: 36px; }
+      .flex.justify-center.py-6 .text-\[11px\] { font-size: 9px; }
+
+      /* ─── Footer ─── */
+      footer { padding: 1.25rem 1rem !important; }
+      footer .text-sm { font-size: 0.78rem; }
+      footer .text-xs { font-size: 0.65rem; }
+      footer .gap-3 { gap: 0.35rem; }
+
+      /* ─── Scroll indicator ─── */
+      section[id] { scroll-margin-top: 64px; }
+
+      /* ─── AOS reduce motion distance ─── */
+      [data-aos="fade-up"] { transform: translate3d(0, 20px, 0) !important; }
+      [data-aos="fade-right"] { transform: translate3d(-15px, 0, 0) !important; }
+      [data-aos="fade-left"] { transform: translate3d(15px, 0, 0) !important; }
+      [data-aos="zoom-in"] { transform: scale(0.95) !important; }
+      [data-aos].aos-animate { transform: translate3d(0, 0, 0) !important; }
+      [data-aos="zoom-in"].aos-animate { transform: scale(1) !important; }
+    }
+
+    /* ── Extra small screens (≤380px) ── */
+    @media (max-width: 380px) {
+      h1 { font-size: 1.4rem !important; }
+      h2 { font-size: 1.3rem !important; }
+      #hero img.rounded-full { width: 100px !important; height: 100px !important; }
+      #hero .flex.flex-wrap.justify-center.gap-4 { flex-direction: column; align-items: center; gap: 0.6rem; }
+      #hero .flex.flex-wrap.justify-center.gap-4 a { width: 100%; text-align: center; justify-content: center; }
+      #skills .grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.4rem !important; }
+      #skills .glass.rounded-2xl.p-6 { padding: 0.7rem; }
+      #skills .glass h3 { font-size: 0.65rem; }
+      #skills .glass .text-xs.text-gray-500 { display: none; }
+      #about .grid.grid-cols-2 .text-2xl { font-size: 1rem; }
+      #about .grid.grid-cols-2 .w-8.h-8 { width: 22px; height: 22px; min-width: 22px; }
+      #about .grid.grid-cols-2 .w-8.h-8 i { width: 11px; height: 11px; }
+      #cp .grid { grid-template-columns: 1fr 1fr !important; gap: 0.35rem !important; }
+      #cp .glass.rounded-2xl.p-8 { padding: 0.7rem 0.5rem; }
+      #cp .flex.justify-center.gap-6 { gap: 0.5rem; }
+      #cp .text-lg.font-bold { font-size: 0.72rem; }
+      #cp h3.text-xl { font-size: 0.65rem; }
+      #cp .w-16.h-16 { width: 28px; height: 28px; }
+      #cp .w-16.h-16 svg { width: 14px; height: 14px; }
+      #projects .grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.35rem !important; }
+      #projects .glass .p-7 { padding: 0.55rem; }
+      #projects .glass .p-7 h3 { font-size: 0.65rem; }
+      #projects .glass .p-7 .text-sm { font-size: 0.6rem; -webkit-line-clamp: 2; }
+      #projects .glass .p-7 .w-10.h-10 { width: 24px; height: 24px; min-width: 24px; }
+      #projects .glass .p-7 .w-10.h-10 i { width: 12px; height: 12px; }
+      .nav-blink { font-size: 9px; }
+      /* Contact info cards stack on very small */
+      #contact .md\:col-span-2 .space-y-4 { grid-template-columns: 1fr !important; max-width: 100% !important; }
+      #contact .md\:col-span-2 .space-y-4 > *:last-child { max-width: 100%; justify-self: stretch; }
+      /* About cards stack on very small */
+      #about .md\:col-span-2 .space-y-5 { max-width: 100% !important; }
+    }
+
+    /* ── Form success/error message ── */
+    .form-status {
+      display: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 12px;
+    }
+    .form-status.success {
+      display: block;
+      background: rgba(16,185,129,0.1);
+      color: #10b981;
+      border: 1px solid rgba(16,185,129,0.2);
+    }
+    .form-status.error {
+      display: block;
+      background: rgba(239,68,68,0.1);
+      color: #ef4444;
+      border: 1px solid rgba(239,68,68,0.2);
+    }
+  </style>
+</head>
+
+<body class="bg-navy-900 text-gray-300 relative">
+
+<!-- ═══════════════════ PARTICLE CANVAS ═══════════════════ -->
+<canvas id="particles"></canvas>
+
+<!-- ═══════════════════ BACKGROUND BLOBS ═══════════════════ -->
+<div class="blob w-[500px] h-[500px] bg-cyan-500 -top-40 -left-40 fixed"></div>
+<div class="blob w-[400px] h-[400px] bg-blue-600 top-1/3 right-0 fixed"></div>
+<div class="blob w-[350px] h-[350px] bg-violet-600 bottom-0 left-1/4 fixed"></div>
+
+<!-- ═══════════════════ NAVBAR (Floating Pill) ═══════════════════ -->
+<nav id="navbar" class="nav-float">
+  <div class="flex items-center justify-between h-12 sm:h-14 px-3 sm:px-5">
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-2 text-base font-bold gradient-text tracking-tight select-none group shrink-0">
+      <img src="profile.jpg" alt="Emon" class="w-8 h-8 rounded-full object-cover object-top border-2 border-cyan-400/40 group-hover:border-cyan-400/80 transition-all shadow-sm shadow-cyan-400/10" />
+      <span class="hidden sm:flex items-center gap-1.5 text-sm"><i data-lucide="terminal" class="w-3.5 h-3.5"></i>imranonweb</span>
+    </a>
+
+    <!-- Mobile blinking status text -->
+    <span class="nav-blink gradient-text font-semibold md:hidden select-none" id="navStatus">Open to Work</span>
+
+    <!-- Desktop links -->
+    <ul class="hidden md:flex items-center gap-1 font-medium">
+      <li><a href="#about" class="nav-link text-gray-400 dark:text-gray-400 transition">About</a></li>
+      <li><a href="#skills" class="nav-link text-gray-400 dark:text-gray-400 transition">Skills</a></li>
+      <li><a href="#cp" class="nav-link text-gray-400 dark:text-gray-400 transition">CP</a></li>
+      <li><a href="#projects" class="nav-link text-gray-400 dark:text-gray-400 transition">Projects</a></li>
+      <li><a href="#contact" class="nav-link text-gray-400 dark:text-gray-400 transition">Contact</a></li>
+    </ul>
+
+    <div class="flex items-center gap-1.5">
+      <!-- Theme toggle -->
+      <button id="themeToggle" aria-label="Toggle theme" class="p-2 rounded-full hover:bg-white/10 transition">
+        <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-yellow-300"></i>
+        <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-600"></i>
+      </button>
+
+      <!-- Mobile burger -->
+      <button id="menuBtn" class="md:hidden p-2 rounded-full hover:bg-white/10 transition" aria-label="Menu">
+        <i data-lucide="menu" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="mobile-menu md:hidden px-3 pb-3">
+    <div class="grid grid-cols-5 gap-1.5 pt-2 pb-1">
+      <a href="#about" class="mobile-link flex flex-col items-center gap-1 py-2.5 rounded-xl hover:bg-white/5 transition text-center">
+        <i data-lucide="user" class="w-4 h-4 text-cyan-400"></i>
+        <span class="text-[10px] font-medium">About</span>
+      </a>
+      <a href="#skills" class="mobile-link flex flex-col items-center gap-1 py-2.5 rounded-xl hover:bg-white/5 transition text-center">
+        <i data-lucide="zap" class="w-4 h-4 text-blue-400"></i>
+        <span class="text-[10px] font-medium">Skills</span>
+      </a>
+      <a href="#cp" class="mobile-link flex flex-col items-center gap-1 py-2.5 rounded-xl hover:bg-white/5 transition text-center">
+        <i data-lucide="trophy" class="w-4 h-4 text-amber-400"></i>
+        <span class="text-[10px] font-medium">CP</span>
+      </a>
+      <a href="#projects" class="mobile-link flex flex-col items-center gap-1 py-2.5 rounded-xl hover:bg-white/5 transition text-center">
+        <i data-lucide="folder-open" class="w-4 h-4 text-emerald-400"></i>
+        <span class="text-[10px] font-medium">Projects</span>
+      </a>
+      <a href="#contact" class="mobile-link flex flex-col items-center gap-1 py-2.5 rounded-xl hover:bg-white/5 transition text-center">
+        <i data-lucide="mail" class="w-4 h-4 text-violet-400"></i>
+        <span class="text-[10px] font-medium">Contact</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section id="hero" class="relative z-10 min-h-screen flex items-center justify-center px-4 pt-20">
+  <div class="max-w-4xl mx-auto text-center">
+    <!-- Profile Photo -->
+    <div class="relative inline-block mb-6" data-aos="zoom-in" data-aos-duration="800">
+      <div class="pulse-ring relative">
+        <img
+          src="profile.jpg"
+          alt="Md. Al Imran Emon"
+          class="w-40 h-40 sm:w-44 sm:h-44 rounded-full object-cover object-top border-[3px] border-cyan-400/40 profile-glow float"
+          loading="eager" decoding="async" fetchpriority="high"
+        />
+        <span class="absolute bottom-2 right-2 w-4 h-4 bg-emerald-400 rounded-full border-[3px] dark:border-navy-900 border-white shadow-lg shadow-emerald-400/30"></span>
+      </div>
+    </div>
+
+    <!-- Availability badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-emerald-400 text-xs font-medium mb-6" data-aos="fade-up" data-aos-delay="150">
+      <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span></span>
+      Open to Opportunities
+    </div>
+
+    <!-- Name -->
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4" data-aos="fade-up" data-aos-delay="200">
+      Hi, I'm <span class="gradient-text">Md. Al Imran Emon</span>
+    </h1>
+
+    <!-- Typing title -->
+    <p class="text-lg sm:text-xl text-gray-400 dark:text-gray-400 font-medium mb-4 typing-cursor" id="typingText" data-aos="fade-up" data-aos-delay="400">Competitive Programmer</p>
+
+    <!-- Location badge -->
+    <div class="flex items-center justify-center gap-2 text-sm text-gray-500 mb-8" data-aos="fade-up" data-aos-delay="450">
+      <i data-lucide="map-pin" class="w-4 h-4 text-cyan-400"></i>
+      <span>Dhaka, Bangladesh</span>
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="600">
+      <a href="#projects" class="btn-glow inline-flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-sm shadow-lg">
+        <i data-lucide="folder-open" class="w-4 h-4"></i> View Projects
+      </a>
+      <a href="#contact" class="btn-glow inline-flex items-center gap-2 px-7 py-3 rounded-full border border-cyan-400/30 text-cyan-400 font-semibold text-sm hover:bg-cyan-400/10 transition">
+        <i data-lucide="send" class="w-4 h-4"></i> Contact
+      </a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="mt-16 animate-bounce" data-aos="fade-up" data-aos-delay="900">
+      <a href="#about" class="text-gray-600 hover:text-cyan-400 transition" aria-label="Scroll down to About section">
+        <i data-lucide="chevrons-down" class="w-6 h-6 mx-auto"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ABOUT ═══════════════════ -->
+<section id="about" class="relative z-10 py-24 px-4 section-alt">
+  <div class="max-w-5xl mx-auto">
+    <!-- Heading -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-3xl sm:text-4xl font-bold dark:text-white text-gray-900 mb-3">About <span class="gradient-text">Me</span></h2>
+      <div class="section-line mx-auto"></div>
+    </div>
+
+    <div class="grid md:grid-cols-5 gap-10 items-start">
+      <!-- Left: quick info cards -->
+      <div class="md:col-span-2 space-y-5" data-aos="fade-right" data-aos-duration="700">
+        <!-- Education card -->
+        <div class="glass rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center shrink-0">
+              <i data-lucide="graduation-cap" class="w-5 h-5 text-cyan-400"></i>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold dark:text-white text-gray-900 text-sm">3rd Year, CSE</h3>
+              <p class="text-cyan-400 text-xs font-medium truncate">Green University of Bangladesh</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs text-gray-500">
+            <i data-lucide="map-pin" class="w-3 h-3 text-cyan-400"></i> Dhaka, Bangladesh
+          </div>
+        </div>
+
+        <!-- Stats mini grid -->
+        <div class="grid grid-cols-2 gap-3">
+          <div class="glass rounded-xl p-4 card-hover flex flex-col items-center gap-1.5">
+            <div class="w-8 h-8 rounded-lg bg-cyan-400/10 flex items-center justify-center">
+              <i data-lucide="bar-chart-3" class="w-4 h-4 text-cyan-400"></i>
+            </div>
+            <p class="text-2xl font-bold gradient-text leading-none">250+</p>
+            <p class="text-[10px] text-gray-500">CF Problems</p>
+          </div>
+          <div class="glass rounded-xl p-4 card-hover flex flex-col items-center gap-1.5">
+            <div class="w-8 h-8 rounded-lg bg-amber-400/10 flex items-center justify-center">
+              <i data-lucide="award" class="w-4 h-4 text-amber-400"></i>
+            </div>
+            <p class="text-2xl font-bold gradient-text leading-none">200+</p>
+            <p class="text-[10px] text-gray-500">CC Problems</p>
+          </div>
+          <div class="glass rounded-xl p-4 card-hover flex flex-col items-center gap-1.5">
+            <div class="w-8 h-8 rounded-lg bg-emerald-400/10 flex items-center justify-center">
+              <i data-lucide="folder-code" class="w-4 h-4 text-emerald-400"></i>
+            </div>
+            <p class="text-2xl font-bold gradient-text leading-none">4+</p>
+            <p class="text-[10px] text-gray-500">Projects</p>
+          </div>
+          <div class="glass rounded-xl p-4 card-hover flex flex-col items-center gap-1.5">
+            <div class="w-8 h-8 rounded-lg bg-violet-400/10 flex items-center justify-center">
+              <i data-lucide="star" class="w-4 h-4 text-violet-400"></i>
+            </div>
+            <p class="text-2xl font-bold gradient-text leading-none">2★</p>
+            <p class="text-[10px] text-gray-500">CodeChef</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: about text -->
+      <div class="md:col-span-3" data-aos="fade-left" data-aos-duration="700">
+        <p class="text-gray-400 dark:text-gray-400 leading-relaxed mb-5 text-sm sm:text-base">
+          I'm <span class="text-cyan-400 font-semibold">Md. Al Imran Emon</span>, a 3rd year <span class="font-semibold dark:text-white text-gray-900">CSE</span> student at <span class="font-semibold dark:text-white text-gray-900">Green University of Bangladesh</span>. In the tech world, I go by <span class="text-cyan-400 font-semibold">imranonweb</span>.
+        </p>
+        <p class="text-gray-400 dark:text-gray-400 leading-relaxed mb-5 text-sm sm:text-base">
+          I actively practice <span class="font-semibold dark:text-white text-gray-900">competitive programming</span> with a strong foundation in <span class="font-semibold dark:text-white text-gray-900">DSA</span>, <span class="font-semibold dark:text-white text-gray-900">C++</span> and <span class="font-semibold dark:text-white text-gray-900">Python</span> — regularly solving on <span class="font-semibold dark:text-white text-gray-900">Codeforces</span> and <span class="font-semibold dark:text-white text-gray-900">CodeChef</span>.
+        </p>
+        <p class="text-gray-400 dark:text-gray-400 leading-relaxed mb-6 text-sm sm:text-base">
+          Beyond algorithms, I'm building expertise in <span class="font-semibold dark:text-white text-gray-900">backend development</span> and exploring <span class="font-semibold dark:text-white text-gray-900">AI/ML</span> — focused on disciplined growth toward a career in software engineering.
+        </p>
+
+        <!-- Interest tags -->
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 text-xs rounded-lg bg-cyan-400/10 text-cyan-400 border border-cyan-400/20 flex items-center gap-1.5"><i data-lucide="swords" class="w-3 h-3"></i> Competitive Programming</span>
+          <span class="px-3 py-1.5 text-xs rounded-lg bg-blue-400/10 text-blue-400 border border-blue-400/20 flex items-center gap-1.5"><i data-lucide="server" class="w-3 h-3"></i> Backend Dev</span>
+          <span class="px-3 py-1.5 text-xs rounded-lg bg-violet-400/10 text-violet-400 border border-violet-400/20 flex items-center gap-1.5"><i data-lucide="brain" class="w-3 h-3"></i> AI / ML</span>
+          <span class="px-3 py-1.5 text-xs rounded-lg bg-emerald-400/10 text-emerald-400 border border-emerald-400/20 flex items-center gap-1.5"><i data-lucide="database" class="w-3 h-3"></i> DBMS</span>
+          <span class="px-3 py-1.5 text-xs rounded-lg bg-amber-400/10 text-amber-400 border border-amber-400/20 flex items-center gap-1.5"><i data-lucide="git-branch" class="w-3 h-3"></i> Open Source</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SKILLS ═══════════════════ -->
+<section id="skills" class="relative z-10 py-24 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-3xl sm:text-4xl font-bold dark:text-white text-gray-900 mb-3">My <span class="gradient-text">Skills</span></h2>
+      <div class="section-line mx-auto"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      <!-- C++ -->
+      <div class="glass rounded-2xl p-6 card-hover group" data-aos="fade-up" data-aos-delay="0">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-cyan-400/10 flex items-center justify-center group-hover:bg-cyan-400/20 transition">
+            <i data-lucide="file-code-2" class="w-5 h-5 text-cyan-400"></i>
+          </div>
+          <h3 class="font-semibold dark:text-white text-gray-900">C++</h3>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Primary language for CP & system-level programming</p>
+        <div class="w-full h-1.5 rounded-full dark:bg-white/5 bg-gray-200 overflow-hidden">
+          <div class="skill-fill" data-width="90%"></div>
+        </div>
+      </div>
+
+      <!-- Python -->
+      <div class="glass rounded-2xl p-6 card-hover group" data-aos="fade-up" data-aos-delay="75">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-yellow-400/10 flex items-center justify-center group-hover:bg-yellow-400/20 transition">
+            <i data-lucide="egg" class="w-5 h-5 text-yellow-400"></i>
+          </div>
+          <h3 class="font-semibold dark:text-white text-gray-900">Python</h3>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Scripting, automation & AI/ML development</p>
+        <div class="w-full h-1.5 rounded-full dark:bg-white/5 bg-gray-200 overflow-hidden">
+          <div class="skill-fill" data-width="75%"></div>
+        </div>
+      </div>
+
+      <!-- DSA -->
+      <div class="glass rounded-2xl p-6 card-hover group" data-aos="fade-up" data-aos-delay="150">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-400/10 flex items-center justify-center group-hover:bg-blue-400/20 transition">
+            <i data-lucide="binary" class="w-5 h-5 text-blue-400"></i>
+          </div>
+          <h3 class="font-semibold dark:text-white text-gray-900">DSA</h3>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Data Structures & Algorithms — core competitive edge</p>
+        <div class="w-full h-1.5 rounded-full dark:bg-white/5 bg-gray-200 overflow-hidden">
+          <div class="skill-fill" data-width="85%"></div>
+        </div>
+      </div>
+
+      <!-- DBMS -->
+      <div class="glass rounded-2xl p-6 card-hover group" data-aos="fade-up" data-aos-delay="225">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-violet-400/10 flex items-center justify-center group-hover:bg-violet-400/20 transition">
+            <i data-lucide="database" class="w-5 h-5 text-violet-400"></i>
+          </div>
+          <h3 class="font-semibold dark:text-white text-gray-900">DBMS</h3>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Database management, SQL & relational design</p>
+        <div class="w-full h-1.5 rounded-full dark:bg-white/5 bg-gray-200 overflow-hidden">
+          <div class="skill-fill" data-width="75%"></div>
+        </div>
+      </div>
+
+      <!-- OOP -->
+      <div class="glass rounded-2xl p-6 card-hover group" data-aos="fade-up" data-aos-delay="300">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-emerald-400/10 flex items-center justify-center group-hover:bg-emerald-400/20 transition">
+            <i data-lucide="boxes" class="w-5 h-5 text-emerald-400"></i>
+          </div>
+          <h3 class="font-semibold dark:text-white text-gray-900">OOP</h3>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Object-Oriented design patterns & principles</p>
+        <div class="w-full h-1.5 rounded-full dark:bg-white/5 bg-gray-200 overflow-hidden">
+          <div class="skill-fill" data-width="80%"></div>
+        </div>
+      </div>
+
+      <!-- Frontend -->
+      <div class="glass rounded-2xl p-6 card-hover group" data-aos="fade-up" data-aos-delay="375">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center group-hover:bg-amber-400/20 transition">
+            <i data-lucide="layout" class="w-5 h-5 text-amber-400"></i>
+          </div>
+          <h3 class="font-semibold dark:text-white text-gray-900">Frontend</h3>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">HTML, CSS, JavaScript — responsive UI development</p>
+        <div class="w-full h-1.5 rounded-full dark:bg-white/5 bg-gray-200 overflow-hidden">
+          <div class="skill-fill" data-width="70%"></div>
+        </div>
+      </div>
+
+      <!-- Backend -->
+      <div class="glass rounded-2xl p-6 card-hover group" data-aos="fade-up" data-aos-delay="450">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-rose-400/10 flex items-center justify-center group-hover:bg-rose-400/20 transition">
+            <i data-lucide="server" class="w-5 h-5 text-rose-400"></i>
+          </div>
+          <h3 class="font-semibold dark:text-white text-gray-900">Backend</h3>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Currently learning — building server-side foundations</p>
+        <div class="w-full h-1.5 rounded-full dark:bg-white/5 bg-gray-200 overflow-hidden">
+          <div class="skill-fill" data-width="40%"></div>
+        </div>
+      </div>
+
+      <!-- Git & GitHub -->
+      <div class="glass rounded-2xl p-6 card-hover group" data-aos="fade-up" data-aos-delay="525">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-orange-400/10 flex items-center justify-center group-hover:bg-orange-400/20 transition">
+            <i data-lucide="git-branch" class="w-5 h-5 text-orange-400"></i>
+          </div>
+          <h3 class="font-semibold dark:text-white text-gray-900">Git & GitHub</h3>
+        </div>
+        <p class="text-xs text-gray-500 mb-3">Version control & collaborative workflows</p>
+        <div class="w-full h-1.5 rounded-full dark:bg-white/5 bg-gray-200 overflow-hidden">
+          <div class="skill-fill" data-width="75%"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ COMPETITIVE PROGRAMMING ═══════════════════ -->
+<section id="cp" class="relative z-10 py-24 px-4 section-alt">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-3xl sm:text-4xl font-bold dark:text-white text-gray-900 mb-3">Competitive <span class="gradient-text">Programming</span></h2>
+      <div class="section-line mx-auto"></div>
+      <p class="text-gray-500 text-sm mt-4 max-w-lg mx-auto">Where discipline meets logic. Profiles on the platforms I grind daily.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+
+      <!-- Codeforces -->
+      <a href="https://codeforces.com/profile/imranonweb" target="_blank" rel="noopener noreferrer"
+         class="glass rounded-2xl p-8 card-hover group text-center block" data-aos="fade-right" data-aos-duration="600">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-8 h-8 text-cyan-400" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M4.5 7.5A1.5 1.5 0 0 1 6 9v10.5A1.5 1.5 0 0 1 4.5 21h-1A1.5 1.5 0 0 1 2 19.5V9a1.5 1.5 0 0 1 1.5-1.5h1Zm7.5-4.5a1.5 1.5 0 0 1 1.5 1.5v15a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 10 19.5v-15A1.5 1.5 0 0 1 11 3h1Zm7.5 9A1.5 1.5 0 0 1 21 13.5v6a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-6A1.5 1.5 0 0 1 18.5 12h1Z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold dark:text-white text-gray-900 mb-1 flex items-center justify-center gap-2">
+          <i data-lucide="bar-chart-3" class="w-5 h-5 text-cyan-400"></i> Codeforces
+        </h3>
+        <p class="text-cyan-400 text-sm font-medium mb-4">@imranonweb</p>
+        <div class="flex justify-center gap-6 text-xs text-gray-500">
+          <div>
+            <span id="cf-rating" class="block text-lg font-bold dark:text-white text-gray-900 flex items-center justify-center gap-1">
+              <span class="inline-block w-4 h-4 rounded-full border-2 border-cyan-400 border-t-transparent animate-spin"></span>
+            </span>
+            <span class="flex items-center gap-1"><i data-lucide="trophy" class="w-3 h-3 text-cyan-400"></i> Rating</span>
+          </div>
+          <div>
+            <span class="block text-lg font-bold dark:text-white text-gray-900">250+</span>
+            <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-3 h-3 text-cyan-400"></i> Solved</span>
+          </div>
+        </div>
+        <div class="mt-5 flex items-center justify-center gap-1 text-cyan-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+          Visit Profile <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </div>
+      </a>
+
+      <!-- CodeChef -->
+      <a href="https://www.codechef.com/users/imranonweb" target="_blank" rel="noopener noreferrer"
+         class="glass rounded-2xl p-8 card-hover group text-center block" data-aos="fade-left" data-aos-duration="600">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-8 h-8 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.2 2.6c.4-.8 1.2-.8 1.6 0l2.4 4.8c.2.4.6.6 1 .7l5.4.8c.8.1 1.1.8.6 1.4l-3.9 3.8c-.3.3-.4.7-.4 1.1l.9 5.4c.1.8-.7 1.4-1.4 1l-4.8-2.5c-.4-.2-.8-.2-1.2 0l-4.8 2.5c-.7.4-1.6-.2-1.4-1l.9-5.4c.1-.4-.1-.8-.4-1.1L1.8 10.3c-.5-.5-.2-1.3.6-1.4l5.4-.8c.4-.1.8-.3 1-.7l2.4-4.8Z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold dark:text-white text-gray-900 mb-1 flex items-center justify-center gap-2">
+          <i data-lucide="award" class="w-5 h-5 text-amber-400"></i> CodeChef
+        </h3>
+        <p class="text-amber-400 text-sm font-medium mb-4">@imranonweb</p>
+        <div class="flex justify-center gap-6 text-xs text-gray-500">
+          <div>
+            <span class="block text-lg font-bold dark:text-white text-gray-900">2 <i data-lucide="star" class="w-4 h-4 text-amber-400 inline"></i></span>
+            <span class="flex items-center gap-1"><i data-lucide="trophy" class="w-3 h-3 text-amber-400"></i> Rating</span>
+          </div>
+          <div>
+            <span class="block text-lg font-bold dark:text-white text-gray-900">200+</span>
+            <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-3 h-3 text-amber-400"></i> Solved</span>
+          </div>
+        </div>
+        <div class="mt-5 flex items-center justify-center gap-1 text-amber-400 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+          Visit Profile <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PROJECTS ═══════════════════ -->
+<section id="projects" class="relative z-10 py-24 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-3xl sm:text-4xl font-bold dark:text-white text-gray-900 mb-3">Featured <span class="gradient-text">Projects</span></h2>
+      <div class="section-line mx-auto"></div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+
+      <!-- Project 1 -->
+      <div class="glass rounded-2xl overflow-hidden card-hover group" data-aos="fade-up" data-aos-delay="0">
+        <div class="h-1.5 bg-gradient-to-r from-cyan-500 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div class="p-7">
+          <div class="flex items-start justify-between mb-3">
+            <div class="w-10 h-10 rounded-xl bg-cyan-400/10 flex items-center justify-center">
+              <i data-lucide="book-open" class="w-5 h-5 text-cyan-400"></i>
+            </div>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-gray-600 group-hover:text-cyan-400 transition-colors"></i>
+          </div>
+          <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-2">GUB Studypoint</h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-4">A centralized academic resource and study platform built for students of Green University to access curated materials and notes.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 text-[10px] font-medium rounded-full bg-cyan-400/10 text-cyan-400 border border-cyan-400/10">HTML</span>
+            <span class="px-2.5 py-1 text-[10px] font-medium rounded-full bg-blue-400/10 text-blue-400 border border-blue-400/10">CSS</span>
+            <span class="px-2.5 py-1 text-[10px] font-medium rounded-full bg-violet-400/10 text-violet-400 border border-violet-400/10">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="glass rounded-2xl overflow-hidden card-hover group" data-aos="fade-up" data-aos-delay="150">
+        <div class="h-1.5 bg-gradient-to-r from-amber-500 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div class="p-7">
+          <div class="flex items-start justify-between mb-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center">
+              <i data-lucide="coffee" class="w-5 h-5 text-amber-400"></i>
+            </div>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-gray-600 group-hover:text-amber-400 transition-colors"></i>
+          </div>
+          <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-2">Coffee Restaurant Website</h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-4">A sleek, modern landing page for a coffee restaurant featuring smooth animations, responsive design, and elegant UI/UX.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 text-[10px] font-medium rounded-full bg-cyan-400/10 text-cyan-400 border border-cyan-400/10">HTML</span>
+            <span class="px-2.5 py-1 text-[10px] font-medium rounded-full bg-blue-400/10 text-blue-400 border border-blue-400/10">CSS</span>
+            <span class="px-2.5 py-1 text-[10px] font-medium rounded-full bg-violet-400/10 text-violet-400 border border-violet-400/10">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="glass rounded-2xl overflow-hidden card-hover group" data-aos="fade-up" data-aos-delay="300">
+        <div class="h-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div class="p-7">
+          <div class="flex items-start justify-between mb-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-400/10 flex items-center justify-center">
+              <i data-lucide="calculator" class="w-5 h-5 text-emerald-400"></i>
+            </div>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-gray-600 group-hover:text-emerald-400 transition-colors"></i>
+          </div>
+          <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-2">CGPA Calculator</h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-4">An intuitive and responsive tool to calculate CGPA with support for multiple grading scales, input validation, and instant results.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 text-[10px] font-medium rounded-full bg-cyan-400/10 text-cyan-400 border border-cyan-400/10">HTML</span>
+            <span class="px-2.5 py-1 text-[10px] font-medium rounded-full bg-blue-400/10 text-blue-400 border border-blue-400/10">CSS</span>
+            <span class="px-2.5 py-1 text-[10px] font-medium rounded-full bg-violet-400/10 text-violet-400 border border-violet-400/10">Assembly</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="glass rounded-2xl overflow-hidden card-hover group" data-aos="fade-up" data-aos-delay="450">
+        <div class="h-1.5 bg-gradient-to-r from-rose-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div class="p-7">
+          <div class="flex items-start justify-between mb-3">
+            <div class="w-10 h-10 rounded-xl bg-rose-400/10 flex items-center justify-center">
+              <i data-lucide="cpu" class="w-5 h-5 text-rose-400"></i>
+            </div>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-gray-600 group-hover:text-rose-400 transition-colors"></i>
+          </div>
+          <h3 class="text-lg font-bold dark:text-white text-gray-900 mb-2">Cache Memory Simulator</h3>
+          <p class="text-sm text-gray-500 leading-relaxed mb-4">A visual simulator demonstrating cache memory mapping techniques including direct-mapped, set-associative, and fully-associative caches.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 text-[10px] font-medium rounded-full bg-cyan-400/10 text-cyan-400 border border-cyan-400/10">Python</span>
+            <span class="px-2.5 py-1 text-[10px] font-medium rounded-full bg-blue-400/10 text-blue-400 border border-blue-400/10">Computer Architecture</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<section id="contact" class="relative z-10 py-24 px-4 section-alt">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-3xl sm:text-4xl font-bold dark:text-white text-gray-900 mb-3">Get In <span class="gradient-text">Touch</span></h2>
+      <div class="section-line mx-auto"></div>
+    </div>
+
+    <div class="grid md:grid-cols-5 gap-8 items-start">
+
+      <!-- Left: Info cards -->
+      <div class="md:col-span-2 space-y-4" data-aos="fade-right" data-aos-duration="600">
+        <!-- Email card -->
+        <div class="glass rounded-2xl p-5 card-hover">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center shrink-0">
+              <i data-lucide="mail" class="w-5 h-5 text-cyan-400"></i>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs text-gray-500 mb-0.5">Email</p>
+              <a href="mailto:alimranemon93@gmail.com" class="text-sm font-medium dark:text-white text-gray-900 hover:text-cyan-400 transition truncate block">alimranemon93@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Location card -->
+        <div class="glass rounded-2xl p-5 card-hover">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500/20 to-purple-500/20 flex items-center justify-center shrink-0">
+              <i data-lucide="map-pin" class="w-5 h-5 text-violet-400"></i>
+            </div>
+            <div>
+              <p class="text-xs text-gray-500 mb-0.5">Location</p>
+              <p class="text-sm font-medium dark:text-white text-gray-900">Dhaka, Bangladesh</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social links -->
+        <div class="glass rounded-2xl p-5 card-hover">
+          <p class="text-xs text-gray-500 mb-3">Find me on</p>
+          <div class="flex gap-3">
+            <a href="https://github.com/imranonweb" target="_blank" rel="noopener noreferrer"
+               class="w-9 h-9 rounded-lg dark:bg-white/5 bg-gray-100 flex items-center justify-center text-gray-500 hover:text-cyan-400 hover:border-cyan-400/30 transition" title="GitHub" aria-label="GitHub profile">
+              <i data-lucide="github" class="w-4 h-4"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/al-imran-emon" target="_blank" rel="noopener noreferrer"
+               class="w-9 h-9 rounded-lg dark:bg-white/5 bg-gray-100 flex items-center justify-center text-gray-500 hover:text-cyan-400 hover:border-cyan-400/30 transition" title="LinkedIn" aria-label="LinkedIn profile">
+              <i data-lucide="linkedin" class="w-4 h-4"></i>
+            </a>
+            <a href="https://codeforces.com/profile/imranonweb" target="_blank" rel="noopener noreferrer"
+               class="w-9 h-9 rounded-lg dark:bg-white/5 bg-gray-100 flex items-center justify-center text-gray-500 hover:text-cyan-400 hover:border-cyan-400/30 transition" title="Codeforces" aria-label="Codeforces profile">
+              <i data-lucide="code-2" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Contact form -->
+      <div class="md:col-span-3" data-aos="fade-left" data-aos-duration="600">
+        <div class="glass rounded-2xl p-6 sm:p-8">
+          <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Replace with YOUR Web3Forms access key (get free at web3forms.com) -->
+            <input type="hidden" name="access_key" value="20a63286-9d63-4805-bef4-5f2f1ccaac98" />
+            <input type="hidden" name="subject" value="New message from Portfolio" />
+            <input type="hidden" name="from_name" value="Portfolio Contact Form" />
+            <!-- Honeypot spam protection -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
+
+            <div class="space-y-4">
+              <!-- Name -->
+              <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1.5 ml-1">Your Name</label>
+                <input type="text" name="name" required placeholder="Write down your awesome name" class="form-input" autocomplete="name" />
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1.5 ml-1">Your Email</label>
+                <input type="email" name="email" required placeholder="your_name@example.com" class="form-input" autocomplete="email" />
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1.5 ml-1">Message</label>
+                <textarea name="message" required placeholder="Hey Imran, I'd love to connect..." class="form-input textarea" rows="4"></textarea>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" id="submitBtn"
+                class="btn-glow w-full inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-sm shadow-lg hover:shadow-cyan-500/20 transition-all">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span id="submitText">Send Message</span>
+              </button>
+            </div>
+
+            <!-- Status message -->
+            <div id="formStatus" class="form-status" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ BACK TO TOP ═══════════════════ -->
+<div class="relative z-10 flex justify-center py-6">
+  <a href="#hero" class="group flex flex-col items-center gap-2 text-gray-500 hover:text-cyan-400 transition-colors duration-300">
+    <div class="w-10 h-10 rounded-full border border-white/10 dark:border-white/10 flex items-center justify-center group-hover:border-cyan-400/40 group-hover:bg-cyan-400/5 transition-all duration-300 group-hover:-translate-y-1">
+      <i data-lucide="arrow-up" class="w-4 h-4"></i>
+    </div>
+    <span class="text-[11px] font-medium tracking-widest uppercase">Back to top</span>
+  </a>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="relative z-10 border-t border-white/10 py-8 px-4">
+  <div class="max-w-5xl mx-auto flex flex-col items-center gap-3">
+    <p class="text-sm text-gray-500">Made with <span class="text-red-500 text-base">&#10084;&#65039;</span> by <span class="gradient-text font-semibold">imranonweb</span></p>
+    <p class="text-xs text-gray-600">&copy; <span id="year">2026</span> Md. Al Imran Emon. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  /* ───── Init AOS ───── */
+  AOS.init({
+    duration: 700,
+    easing: 'ease-out-cubic',
+    once: true,
+    offset: 60,
+  });
+
+  /* ───── Lucide Icons ───── */
+  lucide.createIcons();
+
+  /* ───── Current Year ───── */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ───── Typing Effect ───── */
+  const titles = [
+    'Competitive Programmer',
+    'Software Developer',
+    'AI/ML Enthusiast',
+  ];
+  let titleIdx = 0, charIdx = 0, deleting = false;
+  const typingEl = document.getElementById('typingText');
+  typingEl.textContent = ''; // clear fallback
+
+  function type() {
+    const current = titles[titleIdx];
+    if (!deleting) {
+      typingEl.textContent = current.substring(0, charIdx + 1);
+      charIdx++;
+      if (charIdx === current.length) {
+        deleting = true;
+        return setTimeout(type, 1800);
+      }
+    } else {
+      typingEl.textContent = current.substring(0, charIdx - 1);
+      charIdx--;
+      if (charIdx === 0) {
+        deleting = false;
+        titleIdx = (titleIdx + 1) % titles.length;
+      }
+    }
+    setTimeout(type, deleting ? 40 : 80);
+  }
+  type();
+
+  /* ───── Theme Toggle ───── */
+  const html = document.documentElement;
+  const themeBtn = document.getElementById('themeToggle');
+
+  // Restore saved theme
+  if (localStorage.getItem('theme') === 'light') {
+    html.classList.remove('dark');
+  }
+
+  themeBtn.addEventListener('click', () => {
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    lucide.createIcons(); // re-render icons after toggle
+  });
+
+  /* ───── Mobile Menu ───── */
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  /* ───── Navbar scroll effect ───── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 30) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  /* ───── Active nav link highlight ───── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  const observerOpts = { rootMargin: '-30% 0px -60% 0px' };
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+        if (active) {
+          active.classList.add('active');
+        }
+      }
+    });
+  }, observerOpts);
+
+  sections.forEach(s => observer.observe(s));
+
+  /* ───── Skill bar animation ───── */
+  const skillBars = document.querySelectorAll('.skill-fill');
+  const skillObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.width = entry.target.dataset.width;
+        skillObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  skillBars.forEach(bar => skillObserver.observe(bar));
+
+  /* ───── Live Codeforces Rating ───── */
+  async function fetchCodeforcesStats() {
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 5000);
+      const infoRes = await fetch('https://codeforces.com/api/user.info?handles=imranonweb', { signal: controller.signal });
+      clearTimeout(timeout);
+      const infoData = await infoRes.json();
+      if (infoData.status === 'OK' && infoData.result.length) {
+        const user = infoData.result[0];
+        document.getElementById('cf-rating').textContent = user.rating || 'Unrated';
+        if (user.rank) {
+          document.getElementById('cf-rating').title = user.rank.charAt(0).toUpperCase() + user.rank.slice(1);
+        }
+      } else {
+        document.getElementById('cf-rating').textContent = '—';
+      }
+    } catch (e) {
+      document.getElementById('cf-rating').textContent = '—';
+    }
+  }
+  fetchCodeforcesStats();
+
+  /* ───── Particle Background ───── */
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let mouse = { x: null, y: null };
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  window.addEventListener('mousemove', e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 1.5 + 0.5;
+      this.speedX = (Math.random() - 0.5) * 0.4;
+      this.speedY = (Math.random() - 0.5) * 0.4;
+      this.opacity = Math.random() * 0.4 + 0.1;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      // mouse repel
+      if (mouse.x !== null) {
+        const dx = this.x - mouse.x;
+        const dy = this.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          this.x += dx / dist * 0.8;
+          this.y += dy / dist * 0.8;
+        }
+      }
+
+      if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+        this.reset();
+      }
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(34, 211, 238, ${this.opacity})`;
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    const isMobile = window.innerWidth < 640;
+    const divisor = isMobile ? 20000 : 12000;
+    const maxCount = isMobile ? 50 : 120;
+    const count = Math.min(Math.floor((canvas.width * canvas.height) / divisor), maxCount);
+    particles = [];
+    for (let i = 0; i < count; i++) {
+      particles.push(new Particle());
+    }
+  }
+  initParticles();
+  window.addEventListener('resize', initParticles);
+
+  function connectParticles() {
+    for (let a = 0; a < particles.length; a++) {
+      for (let b = a + 1; b < particles.length; b++) {
+        const dx = particles[a].x - particles[b].x;
+        const dy = particles[a].y - particles[b].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 130) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(34, 211, 238, ${0.06 * (1 - dist / 130)})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(particles[a].x, particles[a].y);
+          ctx.lineTo(particles[b].x, particles[b].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    connectParticles();
+    animFrameId = requestAnimationFrame(animateParticles);
+  }
+  let animFrameId;
+  animateParticles();
+
+  // Pause particles when tab is hidden (saves CPU/battery)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(animFrameId);
+    } else {
+      animateParticles();
+    }
+  });
+
+  /* ───── Mobile nav status text rotation ───── */
+  const navStatusEl = document.getElementById('navStatus');
+  const navStatuses = ['Open to Work', 'CP Grinder', 'Backend Dev', 'AI/ML Explorer'];
+  let navStatusIdx = 0;
+
+  setInterval(() => {
+    navStatusIdx = (navStatusIdx + 1) % navStatuses.length;
+    // Pause CSS animation and use JS transition
+    navStatusEl.style.animationPlayState = 'paused';
+    navStatusEl.style.opacity = '0';
+    setTimeout(() => {
+      navStatusEl.textContent = navStatuses[navStatusIdx];
+      navStatusEl.style.opacity = '1';
+      // Resume CSS pulse after text swap
+      setTimeout(() => { navStatusEl.style.animationPlayState = 'running'; }, 500);
+    }, 400);
+  }, 3500);
+
+  /* ───── Contact Form Submission ───── */
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('submitBtn');
+  const submitText = document.getElementById('submitText');
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitText.textContent = 'Sending...';
+    formStatus.className = 'form-status';
+    formStatus.style.display = 'none';
+
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        formStatus.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+        formStatus.className = 'form-status success';
+        contactForm.reset();
+      } else {
+        throw new Error(data.message || 'Something went wrong');
+      }
+    } catch (err) {
+      formStatus.textContent = '✗ Failed to send. Please email me directly at alimranemon93@gmail.com';
+      formStatus.className = 'form-status error';
+    }
+
+    submitBtn.disabled = false;
+    submitText.textContent = 'Send Message';
+    lucide.createIcons();
+
+    setTimeout(() => {
+      formStatus.style.display = 'none';
+    }, 6000);
+  });
+</script>
+
+</body>
+</html>
